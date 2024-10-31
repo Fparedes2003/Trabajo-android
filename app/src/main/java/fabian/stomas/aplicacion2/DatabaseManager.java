@@ -3,6 +3,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.renderscript.Sampler;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -24,6 +25,23 @@ public class DatabaseManager {
         db.insert("usuario", null, values);
         db.close();
     }
+    public void insertCanal(Canal canal){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Nombre", canal.getNombre());
+        values.put("Descripcion", canal.getDescripcion());
+        values.put("Tipo_canal", canal.getTipo_canal());
+        values.put("admin", canal.getAdmin());
+        db.insert("canales", null, values);
+        db.close();
+    }
+    public void insertTipoCanal(Tipo_canal tipo_canal){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Nombre", tipo_canal.getNombre());
+        db.insert("tipo_canales", null, values);
+        db.close();
+    }
     public ArrayList<Usuario> getAllUsuarios(){
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -43,6 +61,22 @@ public class DatabaseManager {
         cursor.close();
         db.close();
         return listaUsuarios;
+    }
+    public ArrayList<Tipo_canal> getAllTipoCanales(){
+        ArrayList<Tipo_canal> listaTipoCanales = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM tipo_canales", null);
+        if(cursor.moveToFirst()){
+            do{
+                int ID = cursor.getInt(0);
+                String Nombre = cursor.getString(1);
+                Tipo_canal tipo_canal = new Tipo_canal(ID, Nombre);
+                listaTipoCanales.add(tipo_canal);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listaTipoCanales;
     }
     public Usuario getUsuarioByPassEmail(String correo, String password){
         SQLiteDatabase db = dbHelper.getReadableDatabase();

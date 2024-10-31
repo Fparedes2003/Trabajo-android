@@ -15,10 +15,9 @@ import fabian.stomas.aplicacion2.databinding.Ventana2Binding;
 public class ventana_2 extends AppCompatActivity {
     String email;
     String pass;
+    DatabaseManager dtbmng = new DatabaseManager(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        DatabaseManager dtbmng = new DatabaseManager(this);
         Ventana2Binding binding;
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -28,7 +27,13 @@ public class ventana_2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         dtbmng.printDatabaseInfo();
+        ArrayList<Tipo_canal> tipo_canal = dtbmng.getAllTipoCanales();
+        for(Tipo_canal i: tipo_canal){
+            System.out.println(i.ID);
+            System.out.println(i.Nombre);
+        }
         binding = Ventana2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {

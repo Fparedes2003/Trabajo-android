@@ -5,7 +5,7 @@ public class Canal {
     int Id;
     String Nombre;
     String Descripcion;
-    String Tipo_canal;
+    int Tipo_canal;
     int admin;
     ArrayList<Usuario> usuariosCanal;
 
@@ -34,11 +34,11 @@ public class Canal {
         Descripcion = descripcion;
     }
 
-    public String getTipo_canal() {
+    public int getTipo_canal() {
         return Tipo_canal;
     }
 
-    public void setTipo_canal(String tipo_canal) {
+    public void setTipo_canal(int tipo_canal) {
         Tipo_canal = tipo_canal;
     }
 

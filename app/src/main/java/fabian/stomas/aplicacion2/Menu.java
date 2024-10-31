@@ -33,9 +33,9 @@ public class Menu extends AppCompatActivity {
         RecyclerView recyclerView = binding.recycler;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Item> itemList = new ArrayList<>();
-        for(Canal i: CanalInterm.canales){
-            itemList.add(new Item(i.Nombre,i.Descripcion,i.Tipo_canal));
-        }
+        //for(Canal i: CanalInterm.canales){
+        //    itemList.add(new Item(i.Nombre,i.Descripcion,i.Tipo_canal));
+        //}
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
         binding.usuario.setOnClickListener(new View.OnClickListener() {
