@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Aplicacion2</string>
     <string-array name="spinner_options">
-        <item></item>
+        <item>Seleccione un tipo de canal</item>
         <item>Estudio</item>
         <item>Trabajo grupal</item>
         <item>Apuntes</item>
