@@ -80,7 +80,7 @@
                     android:layout_height="40dp"
                     android:backgroundTint="@color/black"
                     android:minHeight="48dp"
-                    android:text="Ver perfil"
+                    android:text="Editar Perfil"
                     android:textColor="@color/white"
                     tools:ignore="TouchTargetSizeCheck" />
 
