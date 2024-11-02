@@ -1,6 +1,5 @@
 package fabian.stomas.aplicacion2;
 import static fabian.stomas.aplicacion2.Usuarios.usuarios;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

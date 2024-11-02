@@ -31,7 +31,7 @@ public class DatabaseManager {
         values.put("Nombre", canal.getNombre());
         values.put("Descripcion", canal.getDescripcion());
         values.put("Tipo_canal", canal.getTipo_canal());
-        values.put("admin", canal.getAdmin());
+        values.put("Admin_ID", canal.getAdmin());
         db.insert("canales", null, values);
         db.close();
     }
@@ -106,6 +106,9 @@ public class DatabaseManager {
                 String nombre = cursor.getString(1);
                 String descripcion = cursor.getString(2);
                 int tipo_canal = cursor.getInt(3);
+                int Admin_ID = cursor.getInt(4);
+                Canal canal = new Canal(id, nombre, descripcion, tipo_canal, Admin_ID);
+                listaCanales.add(canal);
             }while(cursor.moveToNext());
         }
         cursor.close();

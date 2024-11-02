@@ -9,6 +9,17 @@ public class Canal {
     int admin;
     ArrayList<Usuario> usuariosCanal;
 
+    public Canal(){
+
+    }
+
+    public Canal(int Id, String Nombre, String Descripcion, int Tipo_canal, int admin){
+        this.Id = Id;
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.Tipo_canal = Tipo_canal;
+        this.admin = admin;
+    }
 
     public int getId() {
         return Id;

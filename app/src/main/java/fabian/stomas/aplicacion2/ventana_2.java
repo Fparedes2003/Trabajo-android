@@ -44,6 +44,7 @@ public class ventana_2 extends AppCompatActivity {
                 Usuario usuario = dtbmng.getUsuarioByPassEmail(email, pass);
                 if(usuario != null){
                     usuarios.add(usuario);
+                    Usuario.idActual = usuario.getIdUsuarioActual(usuario.ID);
                     Intent intent = new Intent(ventana_2.this, Menu.class);
                     startActivity(intent);
                 }else{
