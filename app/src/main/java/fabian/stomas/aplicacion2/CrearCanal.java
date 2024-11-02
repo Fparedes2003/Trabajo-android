@@ -23,7 +23,6 @@ public class CrearCanal extends AppCompatActivity {
         setContentView(R.layout.crear_canal);
         binding = CrearCanalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        System.out.println("holaaaa");
         ArrayList<Canal> canales = dtbsmng.getAllCanales();
         for(Canal i: canales){
             System.out.println("ID: "+i.Id);
