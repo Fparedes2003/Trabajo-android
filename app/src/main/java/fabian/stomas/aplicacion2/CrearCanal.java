@@ -6,14 +6,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 import fabian.stomas.aplicacion2.databinding.CrearCanalBinding;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
 public class CrearCanal extends AppCompatActivity {
     Canal canal = new Canal();
+    UsuariosCanales usuariosCanales = new UsuariosCanales();
     DatabaseManager dtbsmng = new DatabaseManager(this);
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -23,14 +22,6 @@ public class CrearCanal extends AppCompatActivity {
         setContentView(R.layout.crear_canal);
         binding = CrearCanalBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ArrayList<Canal> canales = dtbsmng.getAllCanales();
-        for(Canal i: canales){
-            System.out.println("ID: "+i.Id);
-            System.out.println("Nombre: "+i.Nombre);
-            System.out.println("Descripcion: "+i.Descripcion);
-            System.out.println("Tipo canal id: "+i.Tipo_canal);
-            System.out.println("Admin: "+i.admin);
-        }
         binding.crear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,7 +30,7 @@ public class CrearCanal extends AppCompatActivity {
                 String tipo_canal;
                 int tipo_canalId = 0;
                 int admin = 0;
-
+                int id_canal = 0;
                 name = binding.nombreCanal.getText().toString();
                 descripcion = binding.descripcion.getText().toString();
                 tipo_canal = binding.tipo.getSelectedItem().toString();
@@ -59,7 +50,10 @@ public class CrearCanal extends AppCompatActivity {
                     canal.setTipo_canal(tipo_canalId);
                     admin = Usuario.idActual;
                     canal.setAdmin(admin);
-                    dtbsmng.insertCanal(canal);
+                    id_canal = dtbsmng.insertCanal(canal);
+                    usuariosCanales.setId_usuario(admin);
+                    usuariosCanales.setId_canal(id_canal);
+                    dtbsmng.insertUsuarios_canales(usuariosCanales);
                     Toast.makeText(CrearCanal.this, "SE HA CREADO TU CANAL", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -25,7 +25,8 @@ public class DatabaseManager {
         db.insert("usuario", null, values);
         db.close();
     }
-    public void insertCanal(Canal canal){
+    public int insertCanal(Canal canal){
+        int id_canal = 0;
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Nombre", canal.getNombre());
@@ -33,13 +34,28 @@ public class DatabaseManager {
         values.put("Tipo_canal", canal.getTipo_canal());
         values.put("Admin_ID", canal.getAdmin());
         db.insert("canales", null, values);
+        dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT ID FROM canales ORDER BY ID DESC LIMIT 1", null);
+        if(cursor.moveToFirst()){
+            id_canal = cursor.getInt(0);
+        }
+        cursor.close();
         db.close();
+        return id_canal;
     }
     public void insertTipoCanal(Tipo_canal tipo_canal){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Nombre", tipo_canal.getNombre());
         db.insert("tipo_canales", null, values);
+        db.close();
+    }
+    public void insertUsuarios_canales(UsuariosCanales usuariosCanales){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("id_usuario", usuariosCanales.getId_usuario());
+        values.put("id_canal", usuariosCanales.getId_canal());
+        db.insert("usuarios_canales", null, values);
         db.close();
     }
     public ArrayList<Usuario> getAllUsuarios(){
@@ -114,6 +130,22 @@ public class DatabaseManager {
         cursor.close();
         db.close();
         return listaCanales;
+    }
+    public ArrayList<UsuariosCanales> getAllUsuarios_canales(){
+        ArrayList<UsuariosCanales> listaUsuarios_canales = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM usuarios_canales", null);
+        if(cursor.moveToFirst()){
+            do{
+                int id_usuario = cursor.getInt(0);
+                int id_canal = cursor.getInt(1);
+                UsuariosCanales usuarioCanal = new UsuariosCanales(id_usuario, id_canal);
+                listaUsuarios_canales.add(usuarioCanal);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listaUsuarios_canales;
     }
     public ArrayList<String> getTableNames(SQLiteDatabase db) {
         ArrayList<String> tableNames = new ArrayList<>();
