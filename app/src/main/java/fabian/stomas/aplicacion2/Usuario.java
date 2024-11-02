@@ -10,6 +10,7 @@ public class Usuario {
     String Password;
     ArrayList<Integer> amigos;
     ArrayList<Integer> canales;
+    public static int idActual = 0;
 
     public Usuario(){
 
@@ -41,6 +42,11 @@ public class Usuario {
         this.Telefono = Telefono;
         this.Correo = Correo;
         this.Password = Pass;
+    }
+
+    public int getIdUsuarioActual(int id){
+        int idActualUsuario = id;
+        return  idActualUsuario;
     }
     public int getID() {
         return ID;
