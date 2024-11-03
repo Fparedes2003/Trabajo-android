@@ -21,6 +21,8 @@ public class Editar extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         for(Usuario i: usuarios){
+            System.out.println(i.Nombre);
+            System.out.println(i.Correo);
             binding.profileText.setText(i.Nombre);
             binding.emailText.setText(i.Correo);
         }
