@@ -46,8 +46,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/img"
-                android:backgroundTint="@color/white"
+                android:background="@drawable/usuario"
                 android:scaleType="centerCrop" />
 
             <LinearLayout
