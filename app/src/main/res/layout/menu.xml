@@ -7,80 +7,83 @@
     android:background="@color/black"
     android:layout_height="match_parent">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="306dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="47dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="7dp"
+        android:id="@+id/campana"
+        android:layout_width="66dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="5dp"
         android:background="@color/black"
+        android:scaleType="centerCrop"
+        android:src="@drawable/campana"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_popup_reminder" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="59dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="176dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCrearCanales"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-    <Button
-        android:id="@+id/buttonCrearCanales"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="134dp"
-        android:layout_marginTop="492dp"
-        android:layout_marginEnd="134dp"
-        android:text="CREAR CANAL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toEndOf="@+id/buttonCrearCanales"
+        app:layout_constraintTop_toBottomOf="@+id/recycler" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
-        android:layout_width="408dp"
-        android:layout_height="177dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="2dp"
+        android:layout_width="383dp"
+        android:layout_height="642dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageButton
         android:id="@+id/usuario"
         android:layout_width="67dp"
         android:layout_height="69dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="448dp"
-        android:layout_marginEnd="76dp"
-        android:alpha="0.2"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCrearCanales"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycler"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/usuario" />
+
+    <ImageButton
+        android:id="@+id/buttonCrearCanales"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/black"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/campana"
+        app:layout_constraintStart_toEndOf="@+id/usuario"
+        app:layout_constraintTop_toBottomOf="@+id/recycler"
+        app:srcCompat="@drawable/mas" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="4dp"
+        android:background="@color/material_dynamic_neutral20"
+        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TUS CANALES"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center"
+            android:textSize="30dp"
+            />
+
+        <ImageView
+            android:id="@+id/lupa"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:scaleType="centerInside"
+            android:src="@drawable/lupa" />
+    </androidx.appcompat.widget.Toolbar>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
