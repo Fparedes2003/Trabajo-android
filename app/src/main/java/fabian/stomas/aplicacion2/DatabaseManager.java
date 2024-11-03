@@ -25,6 +25,20 @@ public class DatabaseManager {
         db.insert("usuario", null, values);
         db.close();
     }
+    public void updateEmailUsuario(String newEmail, String passwordActual, String emailActual){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Correo", newEmail);
+        db.update("usuario", values, "Password = ? AND Correo = ?", new String[]{passwordActual, emailActual});
+        db.close();
+    }
+    public void updatePassUsuario(String passwordActual, String newPassword){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Password", newPassword);
+        db.update("usuario", values, "Password = ?", new String[]{passwordActual});
+        db.close();
+    }
     public int insertCanal(Canal canal){
         int id_canal = 0;
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -103,7 +117,8 @@ public class DatabaseManager {
             String apellido = cursor.getString(2);
             String telefono = cursor.getString(3);
             String email = cursor.getString(4);
-            Usuario usuario = new Usuario(id, nombre, apellido, email, telefono);
+            String passwordUsuario = cursor.getString(5);
+            Usuario usuario = new Usuario(id, nombre, apellido, telefono, email, passwordUsuario);
             cursor.close();
             db.close();
             return usuario;

@@ -106,24 +106,6 @@
                     android:textColor="@color/black"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/didact_gothic"
-                    android:text="Contraseña:"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/contraseñaNUEVA"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:inputType="textPassword"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
                 <Button
                     android:id="@+id/Editar_Correo"
                     android:layout_width="172dp"
@@ -268,7 +250,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/CONTRASEÑAactual"
+                    android:id="@+id/passwordActual"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_marginTop="10dp"
@@ -286,7 +268,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/CONTRASEÑAnueva"
+                    android:id="@+id/newPassword"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_marginTop="10dp"
@@ -295,11 +277,12 @@
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <Button
+                    android:id="@+id/editarPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="61dp"
                     android:layout_marginTop="20dp"
-                    android:text="Editar Contraseña"
                     android:backgroundTint="@color/black"
+                    android:text="Editar Contraseña"
                     android:textSize="20sp" />
 
 
