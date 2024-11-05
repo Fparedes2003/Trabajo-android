@@ -92,6 +92,26 @@ public class DatabaseManager {
         db.close();
         return listaUsuarios;
     }
+    public ArrayList<Canal> getAllCanalesDelUsuario(int usuario_id){
+        ArrayList<Canal> listaCanalesDelUsuario = new ArrayList<>();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT canales.Nombre, canales.Descripcion, tipo_canales.Nombre FROM canales " +
+                "INNER JOIN usuarios_canales ON canales.ID = usuarios_canales.id_canal " +
+                "INNER JOIN usuario ON usuario.ID = usuarios_canales.id_usuario " +
+                "INNER JOIN tipo_canales ON tipo_canales.ID = canales.Tipo_canal WHERE usuarios_canales.id_usuario = ?", new String[]{String.valueOf(usuario_id)});
+        if(cursor.moveToFirst()){
+            do{
+                String Nombre = cursor.getString(0);
+                String Descripcion = cursor.getString(1);
+                String Tipo_canal = cursor.getString(2);
+                Canal canal = new Canal(Nombre, Descripcion, Tipo_canal);
+                listaCanalesDelUsuario.add(canal);
+            }while(cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listaCanalesDelUsuario;
+    }
     public ArrayList<Tipo_canal> getAllTipoCanales(){
         ArrayList<Tipo_canal> listaTipoCanales = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -162,44 +182,4 @@ public class DatabaseManager {
         db.close();
         return listaUsuarios_canales;
     }
-    public ArrayList<String> getTableNames(SQLiteDatabase db) {
-        ArrayList<String> tableNames = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-        if (cursor.moveToFirst()) {
-            do {
-                tableNames.add(cursor.getString(0));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return tableNames;
-    }
-    public ArrayList<String> getColumnNames(SQLiteDatabase db, String tableName) {
-        ArrayList<String> columnNames = new ArrayList<>();
-        Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null);
-        if (cursor.moveToFirst()) {
-            do {
-                columnNames.add(cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        return columnNames;
-    }
-
-
-    public void printDatabaseInfo() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        ArrayList<String> tableNames = getTableNames(db);
-        for (String tableName : tableNames) {
-            System.out.println("Table: " + tableName);
-            ArrayList<String> columnNames = getColumnNames(db, tableName);
-            for (String columnName : columnNames) {
-                System.out.println("  Column: " + columnName);
-            }
-        }
-        db.close();
-    }
-
-
-
-
 }
