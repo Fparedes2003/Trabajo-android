@@ -6,13 +6,18 @@ public class Canal {
     String Nombre;
     String Descripcion;
     int Tipo_canal;
+    String Tipo_canaldb;
     int admin;
     ArrayList<Usuario> usuariosCanal;
 
     public Canal(){
 
     }
-
+    public Canal(String Nombre, String Descripcion, String Tipo_canaldb){
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.Tipo_canaldb = Tipo_canaldb;
+    }
     public Canal(int Id, String Nombre, String Descripcion, int Tipo_canal, int admin){
         this.Id = Id;
         this.Nombre = Nombre;
@@ -51,6 +56,14 @@ public class Canal {
 
     public void setTipo_canal(int tipo_canal) {
         Tipo_canal = tipo_canal;
+    }
+
+    public String getTipo_canaldb() {
+        return Tipo_canaldb;
+    }
+
+    public void setTipo_canaldb(String tipo_canaldb) {
+        Tipo_canaldb = tipo_canaldb;
     }
 
     public int getAdmin() {
