@@ -24,6 +24,7 @@ public class Menu extends AppCompatActivity {
         binding = MenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ArrayList<Canal> canales = dbmng.getAllCanalesDelUsuario(Usuario.idActual);
+        
         binding.buttonCrearCanales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
