@@ -24,7 +24,6 @@ public class Menu extends AppCompatActivity {
         binding = MenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ArrayList<Canal> canales = dbmng.getAllCanalesDelUsuario(Usuario.idActual);
-        System.out.println("");
         binding.buttonCrearCanales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,12 +33,19 @@ public class Menu extends AppCompatActivity {
         });
         RecyclerView recyclerView = binding.recycler;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<Item> itemList = new ArrayList<>();
+        ArrayList<Canal> itemList = new ArrayList<>();
         for(Canal i: canales){
-            itemList.add(new Item(i.Nombre,i.Descripcion,i.Tipo_canaldb));
+            itemList.add(new Canal( i.Id,i.Nombre,i.Descripcion,i.Tipo_canaldb));
         }
         MyAdapter adapter = new MyAdapter(itemList);
         recyclerView.setAdapter(adapter);
+        adapter.setOnClickListener(view -> {
+            int position = recyclerView.getChildAdapterPosition(view);
+            Canal clickedItem = itemList.get(position);
+            //Intent intent = new Intent(Menu.this, claseDePrueba.class);
+            //intent.putExtra("Canal", clickedItem);
+            //startActivity(intent);
+        });
         binding.usuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

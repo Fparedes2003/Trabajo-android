@@ -1,7 +1,8 @@
 package fabian.stomas.aplicacion2;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Canal {
+public class Canal implements Serializable {
     int Id;
     String Nombre;
     String Descripcion;
@@ -12,6 +13,12 @@ public class Canal {
 
     public Canal(){
 
+    }
+    public Canal(int Id, String Nombre, String Descripcion, String Tipo_canaldb){
+        this.Id = Id;
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.Tipo_canaldb = Tipo_canaldb;
     }
     public Canal(String Nombre, String Descripcion, String Tipo_canaldb){
         this.Nombre = Nombre;
