@@ -37,6 +37,11 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".MenuCanal"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name=".ventana_2"
             android:exported="true">
             <intent-filter>
@@ -45,7 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Aplicacion2</string>
+    <string name="avances_de_los_usuarios">Avances de los usuarios</string>
     <string-array name="spinner_options">
         <item>Seleccione un tipo de canal</item>
         <item>Estudio</item>

@@ -66,6 +66,5 @@ public class ventana_2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
