@@ -54,14 +54,12 @@ public class MainActivity extends AppCompatActivity {
         binding.button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<Usuario> usuarios = dbmng.getAllUsuarios();
-                for(Usuario usuario: usuarios){
-                    System.out.println(usuario.ID);
-                    System.out.println(usuario.Nombre);
-                    System.out.println(usuario.Apellido);
-                    System.out.println(usuario.Correo);
-                    System.out.println(usuario.Password);
-                    System.out.println(usuario.Telefono);
+                ArrayList<Canal> canales = dbmng.getAllCanales();
+                for(Canal i: canales){
+                    System.out.println(i.Id);
+                    System.out.println(i.Nombre);
+                    System.out.println(i.Descripcion);
+
                 }
             }
         });
